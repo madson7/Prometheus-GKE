@@ -1,22 +1,21 @@
 
-kubectl delete namespace monitoramento
-kubectl create namespace monitoramento
-kubectl get namespace monitoramento
-
-kubectl create configmap prometheus-configmap --from-file=.\Documents\monitoring-ks8\pods\prometheus\config\prometheus.yml --namespace=monitoramento
-kubectl get configmap -n monitoramento
-kubectl describe configmap prometheus-configmap -n monitoramento
-kubectl create -f Documents\monitoring-ks8\pods\prometheus\prometheus-volumes.yml
-kubectl create -f Documents\monitoring-ks8\pods\prometheus\prometheus-deploy.yml
-kubectl create -f Documents\monitoring-ks8\pods\prometheus\prometheus-service.yml
-kubectl get deployment -n monitoramento
-
-kubectl describe pods -n monitoramento
+kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\config\account.yaml
+kubectl create configmap prometheus-configmap --from-file=C:\Users\Bull\Documents\monitoring-ks8\prometheus\config\prometheus.yml --namespace=monitoring
+kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-volumes.yml
+kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-deploy.yml
 
 
+kubectl get configmap -n monitoring
+kubectl describe configmap prometheus-configmap -n monitoring
+
+kubectl get deployment -n monitoring
+
+kubectl describe pods -n monitoring
+
+kubectl delete namespace monitoring
 
 
-kubectl get pods -n monitoramento
+kubectl get pods -n monitoring
 
 kubectl create -f
 
