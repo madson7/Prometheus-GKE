@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana-deployment
   namespace: monitoring
+  name: grafana-deployment
 spec:
   selector:
     matchLabels:
@@ -10,38 +10,32 @@ spec:
   template:
     metadata:
       labels:
-        app: grafana-deployment           
+        app: grafana-deployment
     spec:
+      securityContext:
+        runAsUser: 472
+        fsGroup: 472
       containers:
       - name: grafana
         image: grafana/grafana
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+          requests: 
+            memory: 1Gi
+            cpu: 500m
         env:
         - name: GF_SECURITY_ADMIN_PASSWORD
-          value: admin1
+          value: admin
         - name: GF_INSTALL_PLUGINS
           value: grafana-clock-panel,grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource,vonage-status-panel,alexanderzobnin-zabbix-app,grafana-worldmap-panel,raintank-worldping-app,agenty-flowcharting-panel
         ports:
         - containerPort: 3000
         volumeMounts:
-          - name: grafana-volume
-            mountPath: /var/lib/grafana          
+        - mountPath: /var/lib/grafana
+          name: grafana-storage
       volumes:
-        - name: grafana-volume
-          persistentVolumeClaim:
-            claimName: grafana-persistentvolumeclaim
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: grafana-service
-  namespace: monitoring
-spec:
-  selector:
-    app: grafana
-  type: NodePort
-  ports:
-  - name: grafana
-    protocol: TCP
-    port: 3000
-    nodePort: 3000
+      - name: grafana-storage
+        persistentVolumeClaim:
+            claimName: grafana-pvc

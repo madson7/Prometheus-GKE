@@ -1,10 +1,4 @@
 
-kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\config\account.yaml
-kubectl create configmap prometheus-configmap --from-file=C:\Users\Bull\Documents\monitoring-ks8\prometheus\config\prometheus.yml --namespace=monitoring
-kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-volumes.yml
-kubectl create -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-deploy.yml
-
-
 kubectl get configmap -n monitoring
 kubectl describe configmap prometheus-configmap -n monitoring
 
@@ -12,12 +6,12 @@ kubectl get deployment -n monitoring
 
 kubectl describe pods -n monitoring
 
-kubectl delete namespace monitoring
+kubectl create namespace monitoramento
 
 
 kubectl get pods -n monitoring
 
-kubectl create -f
+kubectl apply  -f
 
 kubectl expose pod
 
@@ -31,5 +25,23 @@ kubectl get pods
 
 minikube service list
 
-kubectl scale deployment contagem-deployment --replicas=20
+kubectl scale deployment prometheus-deploy --replicas=0 -n monitoring
 
+gcloud compute disks list
+
+gcloud compute disks create grafanadisk --size=10gi
+
+
+kubectl apply -f 
+
+
+
+gcloud compute firewall-rules create nodepp --allow tcp:30090
+
+
+
+
+kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\config\config.yaml
+kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\configMap-prometheus.yaml
+kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-volumes.yaml
+kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-deployment.yaml
