@@ -18,13 +18,6 @@ spec:
       containers:
       - name: grafana
         image: grafana/grafana
-        resources:
-          limits:
-            memory: 2Gi
-            cpu: 1000m
-          requests: 
-            memory: 1Gi
-            cpu: 500m
         env:
         - name: GF_SECURITY_ADMIN_PASSWORD
           value: admin
@@ -33,8 +26,8 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - mountPath: /var/lib/grafana
-          name: grafana-storage
+        - name: grafana-storage
+          mountPath: /var/lib/grafana
       volumes:
       - name: grafana-storage
         persistentVolumeClaim:

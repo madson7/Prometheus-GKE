@@ -1,0 +1,17 @@
+devices:
+  - name: CHR-01
+    address: 192.168.0.6
+    user: prometheus
+    password: 12345678
+  - name: CHR-02
+    address: 192.168.0.7
+    user: prometheus
+    password: 12345678
+  - name: CHR-03
+    address: 192.168.0.8
+    user: prometheus
+    password: 12345678
+  - name: CHR-04
+    address: 192.168.0.9
+    user: prometheus
+    password: 12345678

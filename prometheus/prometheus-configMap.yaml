@@ -98,31 +98,12 @@ data:
           target_label: __metrics_path__
           replacement: /api/v1/nodes/${1}/proxy/metrics      
 
-      - job_name: 'exporter_mikrotik'
-        metrics_path: '/metrics'
-        params:
-          format: [prometheus]
-        honor_labels: true
-        scrape_interval: 5s
-        static_configs:
-            - targets: ['192.168.0.7:9436']
-
-      - job_name: 'exporter_linux'
-        metrics_path: '/metrics'
-        params:
-          format: [prometheus]
-        honor_labels: true
-        scrape_interval: 5s
-        static_configs:
-            - targets: ['192.168.0.7:9100']
-
-      - job_name: 'exporter_ping'
-        metrics_path: '/metrics'
-        params:
-          format: [prometheus]
-        honor_labels: true
-        scrape_interval: 5s
-        static_configs:
-            - targets: ['192.168.0.7:9101']
-
-            # kubectl scale deployment/prometheus -n monitoring --replicas=1
+      - job_name: 'consul-services'
+        scrape_interval: 1s
+        consul_sd_configs:
+        - server: 'http://34.71.71.92:30085'
+        relabel_configs:
+        - source_labels: ['__meta_consul_service_id']
+          action: drop
+          regex: consul
+          target_label: job

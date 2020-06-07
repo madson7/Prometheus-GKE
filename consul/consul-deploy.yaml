@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consul-deploy
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: consul-deploy
+  template:
+    metadata:
+      labels:
+        app: consul-deploy
+    spec:
+      containers:
+      - name: consul-deploy
+        image: consul
+        ports:
+        - containerPort: 8500

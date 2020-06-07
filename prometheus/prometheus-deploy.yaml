@@ -25,13 +25,13 @@ spec:
         ports:
         - containerPort: 9090
         volumeMounts:
-          - name: config-volume
+          - name: config-job
             mountPath: /etc/prometheus/prometheus.yml
             subPath: prometheus.yml
           - name: prometheus-volume
             mountPath: /etc/prometheus
       volumes:
-        - name: config-volume
+        - name: config-job
           configMap:
             name: prometheus-config
         - name: prometheus-volume
