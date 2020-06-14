@@ -26,8 +26,8 @@ This repository uses some monitoring tools in a modular way to collect metrics a
 
 Cloned the repository
 ```
-# git clone https://github.com/madson7/monitoring-k8s.git
-# cd monitoring-k8s
+> git clone https://github.com/madson7/monitoring-k8s.git
+> cd monitoring-k8s
 ```
 
 ## Kubernetes Gcloud
@@ -35,14 +35,14 @@ Cloned the repository
 ![](img/kubernetes.png)
 
 ```
-# kubectl apply -f config\
-# kubectl apply -f prometheus\
-# kubectl apply -f consul\
-# kubectl apply -f grafana\
+> kubectl apply -f config\
+> kubectl apply -f prometheus\
+> kubectl apply -f consul\
+> kubectl apply -f grafana\
 ```
 As we are using NodePort, we will expose the same
 ```
-# gcloud compute firewall-rules create NAME --allow tcp:Port
+> gcloud compute firewall-rules create NAME --allow tcp:Port
 ```
 
 ## Mikrotik Config
@@ -58,11 +58,11 @@ Create the user to access the API via.
 ```
 ## Consul Config
 ```
-# curl -T consul\config\ping-01.json http://IP-consul:Port/v1/agent/service/register
+> curl -T consul\config\ping-01.json http://IP-consul:Port/v1/agent/service/register
 
-# curl -T consul\config\mikrotik-01.json http://IP-consul:Port/v1/agent/service/register
+> curl -T consul\config\mikrotik-01.json http://IP-consul:Port/v1/agent/service/register
 
-# curl -T consul\config\linux-01.json http://IP-consul:Port/v1/agent/service/register
+> curl -T consul\config\linux-01.json http://IP-consul:Port/v1/agent/service/register
 ```
 
 ## Configuration of Node Exporters on linux server
