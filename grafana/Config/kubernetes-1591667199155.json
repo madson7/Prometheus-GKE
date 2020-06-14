@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1591667194281,
+  "id": 1,
+  "iteration": 1592100690727,
   "links": [],
   "panels": [
     {
@@ -277,7 +277,7 @@
       "gridPos": {
         "h": 5,
         "w": 7,
-        "x": 9,
+        "x": 7,
         "y": 7
       },
       "id": 86,
@@ -317,6 +317,108 @@
       "type": "gauge"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 14,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 90,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "100 * (kubelet_volume_stats_used_bytes{kubernetes_io_hostname=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"} / kubelet_volume_stats_capacity_bytes{kubernetes_io_hostname=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{ persistentvolumeclaim }}",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "aliasColors": {
         "Total memory in k8s": "dark-red"
       },
@@ -334,7 +436,7 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 7,
         "x": 0,
         "y": 12
@@ -404,7 +506,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:9020",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -413,7 +514,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:9021",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -443,7 +543,7 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 7,
         "x": 7,
         "y": 12
@@ -536,204 +636,6 @@
     {
       "aliasColors": {},
       "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 10,
-        "x": 14,
-        "y": 12
-      },
-      "hiddenSeries": false,
-      "id": 90,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "100 * (kubelet_volume_stats_used_bytes{kubernetes_io_hostname=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"} / kubelet_volume_stats_capacity_bytes{kubernetes_io_hostname=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{ persistentvolumeclaim }}",
-          "refId": "A",
-          "step": 120
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Disk Usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 0,
-        "y": 18
-      },
-      "hiddenSeries": false,
-      "id": 78,
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "histogram_quantile(0.9, sum by (node,le) (rate(kubelet_pleg_relist_duration_seconds_bucket{node=\"\"}[5m])))",
-          "interval": "",
-          "legendFormat": "{{node}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "kubelet_pleg_relist_duration_seconds_bucket",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:2839",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:2840",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
@@ -743,7 +645,6 @@
           "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:344",
               "id": 0,
               "op": "=",
               "text": "N/A",
@@ -779,7 +680,7 @@
         "h": 6,
         "w": 10,
         "x": 14,
-        "y": 18
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 80,
@@ -838,7 +739,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:6788",
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -847,13 +747,106 @@
           "show": true
         },
         {
-          "$$hashKey": "object:6789",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 78,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.9, sum by (node,le) (rate(kubelet_pleg_relist_duration_seconds_bucket{node=\"\"}[5m])))",
+          "interval": "",
+          "legendFormat": "{{node}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "kubelet_pleg_relist_duration_seconds_bucket",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
         }
       ],
       "yaxis": {
@@ -873,7 +866,6 @@
           "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:344",
               "id": 0,
               "op": "=",
               "text": "N/A",
@@ -906,10 +898,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 10,
-        "x": 14,
-        "y": 24
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 82,
@@ -968,7 +960,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:6788",
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -977,7 +968,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:6789",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1003,7 +993,6 @@
           "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:344",
               "id": 0,
               "op": "=",
               "text": "N/A",
@@ -1036,10 +1025,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 10,
-        "x": 14,
-        "y": 31
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 84,
@@ -1098,7 +1087,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:6788",
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -1107,7 +1095,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:6789",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1290,7 +1277,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1309,5 +1296,5 @@
   "timezone": "",
   "title": "kubernetes",
   "uid": "QI-brtmMk",
-  "version": 10
+  "version": 4
 }
