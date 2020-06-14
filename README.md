@@ -58,14 +58,22 @@ Create the user to access the API via.
 ```
 ## Consul Config
 ```
-# curl -T mk.json http://34.71.71.92:30085/v1/agent/service/register
+# curl -T consul\config\ping-01.json http://IP-consul:Port/v1/agent/service/register
+
+# curl -T consul\config\mikrotik-01.json http://IP-consul:Port/v1/agent/service/register
+
+# curl -T consul\config\linux-01.json http://IP-consul:Port/v1/agent/service/register
 ```
 
-## Nodes Exporters Config
+## Configuration of Node Exporters on linux server
 ```
-# ./mikrotik-exporter -config-file config.yaml
+# ./prometheus/node-exporter/mikroti/kmikrotik-exporter -config-file prometheus/node-exporter/mikroti/config.yaml
+
+# ./prometheus/node-exporter/ping/ping_exporter --config.path prometheus\node-exporter\ping\ping.yml --web.listen-address=":9101"
+
+# ./prometheus/node-exporter/exporter_linux --web.listen-address=":9100"
 ```
 
 
 
-falta muito kkk
+Falta muito kkk

@@ -47,4 +47,6 @@ kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-vo
 kubectl apply -f C:\Users\Bull\Documents\monitoring-ks8\prometheus\prometheus-deployment.yaml
 
 
-curl -T Documents\monitoring-ks8\cosul\config\cadvisor-01.json http://35.222.80.174:30085/v1/agent/service/register
+curl -T Documents\monitoring-ks8\cosul\config\ping-01.json http://104.197.17.187:30085/v1/agent/service/register
+
+
