@@ -1,4 +1,4 @@
-# Monitoring-k8s
+# Prometheus-gke
 
 ![](img/monitoring.png)
 
